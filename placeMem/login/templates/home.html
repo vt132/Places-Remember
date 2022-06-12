@@ -1,11 +1,29 @@
 <!-- templates/home.html -->
  
     {% extends 'base.html' %}
-    {% block title %} Home {% endblock %}
+    <!-- comment-->
+    <!--
+    <div id='map' style='width: 400px; height: 300px;position: relative;'></div>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoidnRoMTMyIiwiYSI6ImNrcXhhMDV4YTA5cGgyb21yNzI2dnU0dHkifQ.dPa7Yjpa9pM3ddEimTXy3w';
+      var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11'
+      });
+    </script>
+    -->
+
+    {% block map %}
+    {% endblock %}
+    {% block content1 %}
+    <div class='user-tool', style="justify-content: right;text-align: right;">
+        Welcome,
+        <strong>{{user.first_name}} {{user.last_name}}</strong>
+        <a href="/logout/">Log out</a>
+    </div>
+    {% endblock %}
     {% block content %}
-    <div class="row">
-        <div class="col-sm-12 mb-3">
-            <h4 class="text-center" > Welcome {{ user.name }} </h4>
-        </div>
+    <div class = 'no_mem_text' style="width:100%;height:100vh;flex: 1 1 auto;text-align: center;">
+    No memories to display, you can <a href="/create"> create</a> one.
     </div>
     {% endblock %}
