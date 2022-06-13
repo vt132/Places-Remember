@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block map %}
+{% endblock %}
+{% block content1 %}
+
+<div class='user-tool', style="justify-content: right;text-align: right;">
+
+    <img src="https://graph.facebook.com/v14.0/{{uid}}/picture" alt="" width="50" height="50" style="border-radius: 50%">
+    Welcome,
+    <strong>{{user.first_name}} {{user.last_name}}</strong>
+    <a href="/logout/">Log out</a>
+</div>
+{% endblock %}
+{% block content %}
+<a href = "/create"><button>ADD A MEMORY</button></a>
+    <!-- Iterate over object_list -->
+    <form>
+    {% for mem in qs %}
+    <!-- Display Objects -->
+        <h1>{{ mem.name }}</h1>
+        <h5>Position (lat/lng) </h5>{{ mem.position }}
+        <h5>Description:</h5>{{ mem.desc }}    
+    </form>   
+    <!-- If object_list is empty  -->
+    {% empty %}
+    <div> YOU HAVE NO MEMORIES.</div>
+    {% endfor %}
+   
+{% endblock %}

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,8 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "mapbox_location_field",
     'login',
     'social_django',
+    'memories',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', 
 ]
 
 ROOT_URLCONF = 'placeMem.urls'
@@ -56,7 +59,7 @@ ROOT_URLCONF = 'placeMem.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +67,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -130,7 +135,7 @@ AUTHENTICATION_BACKENDS = [
 
 LOGIN_URL = 'login'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'list_view'
 
 LOGOUT_URL = 'logout'
 
@@ -138,3 +143,6 @@ LOGOUT_REDIRECT_URL = 'login'
 
 SOCIAL_AUTH_FACEBOOK_KEY = 739311787487661
 SOCIAL_AUTH_FACEBOOK_SECRET = "ade4099a285a9228987dcda11cbb9153"
+
+MAPBOX_KEY= 'pk.eyJ1IjoidnRoMTMyIiwiYSI6ImNrcXhhMDV4YTA5cGgyb21yNzI2dnU0dHkifQ.dPa7Yjpa9pM3ddEimTXy3w'
+mapbox_access_token = 'pk.eyJ1IjoidnRoMTMyIiwiYSI6ImNrcXhhMDV4YTA5cGgyb21yNzI2dnU0dHkifQ.dPa7Yjpa9pM3ddEimTXy3w'

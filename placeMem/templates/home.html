@@ -1,0 +1,62 @@
+<!-- templates/home.html -->
+ 
+    {% extends 'base.html' %}
+    {% block map %}
+    <style type="text/css">
+      #info {
+      display: table;
+      position: relative;
+      margin: 0px auto;
+      word-wrap: anywhere;
+      white-space: pre-wrap;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      font-size: 12px;
+      text-align: center;
+      color: #222;
+      background: #fff;
+      }
+      </style>
+    <div id='map' style='width: 800px; height: 600px;position: relative;'></div>
+    <pre id="info"></pre>
+    <script>
+      mapboxgl.accessToken = 'pk.eyJ1IjoidnRoMTMyIiwiYSI6ImNrcXhhMDV4YTA5cGgyb21yNzI2dnU0dHkifQ.dPa7Yjpa9pM3ddEimTXy3w';
+          const map = new mapboxgl.Map({
+          container: 'map', // container id
+          style: 'mapbox://styles/mapbox/streets-v11',
+          center: [-74.5, 40], // starting position
+          zoom: 9 // starting zoom
+          });
+ 
+      map.on('click', (e) => {
+                  document.getElementById('info').innerHTML =
+                  JSON.stringify(e.point) +
+                  '<br />' +
+                  JSON.stringify(e.lngLat.wrap());
+                });
+      </script>
+
+
+    
+    {% endblock %}
+    {% block content1 %}
+    <div class='user-tool', style="justify-content: right;text-align: right;">
+        Welcome,
+        <strong>{{user.first_name}} {{user.last_name}}</strong>
+        <a href="/logout/">Log out</a>
+    </div>
+
+    {% for ass in backends.associated %}
+    {% if ass.provider == 'facebook' %} 
+    <div class="col-md-6 text-center">
+      <img src="{{ass.extra_data.picture.data.url}}" alt="" width="150" height="150" style="border-radius: 50%">
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endblock %}
+    {% block content %}
+    <div class = 'no_mem_text' style="width:100%;height:100vh;flex: 1 1 auto;text-align: center;padding-top: 10% 0;">
+    No memories to display
+    </div>
+    {% endblock %}

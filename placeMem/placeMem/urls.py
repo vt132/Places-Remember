@@ -17,12 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
-from login import views
-
+from login import views as loginViews
+from memories import views as memViews
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', views.login, name = "login"),
+    path('login/', loginViews.login, name = "login"),
     path('logout/', auth_views.LogoutView.as_view(), name="logout"),
     path('fb-auth/', include('social_django.urls', namespace="fb")),
-    path("", views.home, name="home"),
+    path('', memViews.MemoriesListView.as_view(), name ='list_view'), 
+    path('create', memViews.MemoriesCreateView.as_view(), name = 'new_view'),
+    path('edit', memViews.MemoriesUpdateView.as_view(), name = 'update_view'),
+    path('delete', memViews.MemoriesDeleteView.as_view(), name = 'delete_view'),
 ]
