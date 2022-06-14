@@ -28,3 +28,5 @@ wincertstore==0.2
 # Test user
 - e-mail: testplacemem@gmail.com
 - pass: passwd@123
+# Notes
+If not login, use "/login" to login since "/" and "/home" urls are not accessible without login
