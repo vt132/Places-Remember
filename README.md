@@ -25,13 +25,6 @@ tzdata==2022.1
 urllib3==1.26.9
 wincertstore==0.2
 ```
-# Test users
-1.
-- Email: lmjfjjhwgo_1655130051@tfbnw.net
-- Pass: passwd123
-2.
-- Email: rokgrsqegx_1655129865@tfbnw.net
-- Pass: passwd123
-3.
-- Email: hzltmmdcyo_1655129793@tfbnw.net
-- Pass: passwd123
+# Test user
+- e-mail: testplacemem@gmail.com
+- pass: passwd@123
