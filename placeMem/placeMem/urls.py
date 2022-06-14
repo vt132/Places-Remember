@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.contrib.auth import views as auth_views
 
 from login import views as loginViews
@@ -26,6 +26,7 @@ urlpatterns = [
     path('fb-auth/', include('social_django.urls', namespace="fb")),
     path('', memViews.MemoriesListView.as_view(), name ='list_view'), 
     path('create', memViews.MemoriesCreateView.as_view(), name = 'new_view'),
-    path('edit', memViews.MemoriesUpdateView.as_view(), name = 'update_view'),
-    path('delete', memViews.MemoriesDeleteView.as_view(), name = 'delete_view'),
+    path('home', memViews.MemoriesListView.as_view() ,name ='list_view')
+#    path('edit', memViews.MemoriesUpdateView.as_view(), name = 'update_view'),
+#    path('delete', memViews.MemoriesDeleteView.as_view(), name = 'delete_view'),
 ]

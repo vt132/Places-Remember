@@ -1,6 +1,7 @@
 <!-- templates/home.html -->
 {% extends 'base.html' %}
-{% block map %}
+{% block content1 %}
+
 {% endblock %}
 {% block content %}
 <form method="post">
@@ -9,5 +10,5 @@
   <input type="submit" value="Save">
 </form>
 {{ form.media }}
-
+<a href ="/home"><input type="submit" value="Discard"></a>
 {% endblock %}
